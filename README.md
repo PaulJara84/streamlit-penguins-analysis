@@ -153,29 +153,76 @@ def test_validate_no_nulls():
 
  ```
 
+Ejecuta las pruebas localmente para verificar:
 
-## 🖥️ Descarga del repositorio
-
-   - Descargar el repositorio
-     ```bash
-     git clone https://github.com/Giovanni26101982/Grupo4_Docker_TareaFinal.git
-     ```
-<img width="1125" height="305" alt="image" src="https://github.com/user-attachments/assets/3b02a6b7-49a1-42c2-a1af-cdb5f3eb8703" />
-
-   - Navegar a la carpeta descargada 
-     ```bash
-     cd Grupo4_Docker_TareaFinal/
-     ```
-<img width="1123" height="64" alt="tarea final" src="https://github.com/user-attachments/assets/96636ef1-0f24-421d-a876-0c1f684a148c" />
-
+```bash
+     pytest tests/ -v
+```
 
 ---
 
-## 🚀 Requisitos previos
-- Docker instalado
-- Docker Compose instalado
+## 4. Lanzamiento y Documentación (Release)
+
+Una vez completadas todas las funcionalidades, fusiona las ramas a **develop** y luego a **main** para crear el release.
+
+4.1. **Fusión de Ramas**
+
+```bash
+# Desde cada rama feature, después de commitear:
+git checkout develop
+git merge feature/validacion-datos --no-ff
+git merge feature/app-principal --no-ff
+git merge feature/viz-tabular --no-ff
+git merge feature/pruebas-pytest --no-ff
+
+# Verificar que todo funcione en develop antes de pasar a main
+```
+
+4.2. **Creación del Release y Tags**
+
+El release marca una versión estable. Se crea desde la rama **main**.
+
+```bash
+git checkout main
+git merge develop --no-ff
+
+# Crear tag de versión
+git tag -a v1.0.0 -m "Release inicial: App Streamlit con validación y tests"
+
+# Subir todo a GitHub (asumiendo remoto configurado como 'origin')
+git push origin main develop --tags   
+```
 
 ---
+
+## Documentación del Repositorio
+
+El repositorio debe incluir dos archivos Markdown clave:
+
+1. **README.md** : Describe el propósito.
+   
+- Contenido sugerido: "Este proyecto es una aplicación de análisis de datos construida con Streamlit para explorar el dataset Palmer Penguins. Incluye validación de datos automatizada, visualización interactiva de tablas y gráficos, y un suite de pruebas unitarias con pytest."
+  
+2. **INFORME_LABORATORIO.md**: Detalla el procedimiento.
+
+- Contenido requerido:
+
+    - Explicación del flujo GitFlow utilizado (ramas creadas).
+    - Capturas de pantalla (gráficas) de la ejecución del dashboard principal.
+    - Captura de la tabla de datos interactiva.
+    - Captura de la terminal mostrando la ejecución exitosa de pytest (con los checks en verde).
+
+---
+
+##Checklist Final de Entrega
+
+Antes de considerar la tarea finalizada, verifica en tu repositorio remoto de GitHub:
+
+- [ ] Existencia de la rama main y develop.
+- [ ] Presencia del tag v101.1.0 (o similar) en la sección de "Releases" o "Tags".
+- [ ] Archivo penguins.csv cargado en el repositorio.
+- [ ] Archivos README.md e INFORME_LABORATORIO.md visibles y con contenido.
+- [ ] Historial de commits que refleje el uso de ramas feature (ej. "Merge branch 'feature/validacion-datos'").
 
 ## 📂 Estructura
 ```bash
