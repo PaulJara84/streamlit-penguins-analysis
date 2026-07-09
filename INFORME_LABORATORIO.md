@@ -1,10 +1,10 @@
-## Informe de Laboratorio: Aplicación Streamlit con GitFlow
+# Informe de Laboratorio: Aplicación Streamlit con GitFlow
 
-# 1. Objetivo
+## 1. Objetivo
 
 Desarrollar una aplicación de análisis de datos sobre el dataset Palmer Penguins utilizando Streamlit, implementando un flujo de trabajo de control de versiones GitFlow e integrando pruebas automatizadas con pytest.
 
-# 2. Procedimiento Realizado
+## 2. Procedimiento Realizado
 
 2.1. **Configuración del Repositorio y GitFlow**
 
@@ -26,22 +26,31 @@ Cada rama fue fusionada a **develop** utilizando **git merge --no-ff** para pres
 2.3. Pruebas y Release
 Se ejecutó el suite de pruebas con pytest, validando el correcto funcionamiento de los módulos de utilidad. Tras verificar la estabilidad en develop, se fusionó el código a main y se etiquetó la versión estable con el tag v1.0.0.
 
-3. Evidencias de Ejecución
-3.1. Dashboard Principal
+---
+
+## 3. Evidencias de Ejecución
+
+3.1. **Dashboard Principal**
+
 La aplicación carga correctamente, valida los datos y muestra las métricas iniciales.
 
 [INSERTAR AQUÍ CAPTURA DE PANTALLA DEL DASHBOARD PRINCIPAL CON MÉTRICAS]
 
-3.2. Visualización Tabular
+3.2. **Visualización Tabular**
+
 Se muestra la tabla interactiva con los datos de los pingüinos y los gráficos de distribución.
 
 [INSERTAR AQUÍ CAPTURA DE PANTALLA DE LA TABLA DE DATOS Y GRÁFICOS]
 
-3.3. Pruebas con Pytest
+3.3. **Pruebas con Pytest**
+
 Ejecución exitosa de los tests unitarios en la terminal, confirmando la validez del código.
 
 [INSERTAR AQUÍ CAPTURA DE PANTALLA DE LA TERMINAL CON EL RESULTADO DE PYTEST (verde)]
 
-4. Conclusión
-Se logró implementar exitosamente un ciclo de vida de desarrollo de software ágil mediante GitFlow, garantizando la calidad del código a través de pruebas unitarias y entregando una aplicación funcional de análisis de datos. El repositorio cuenta con las ramas main, develop, el tag de versión y la documentación requerida.
+---
+
+## 4. Conclusión
+
+- Se logró implementar exitosamente un ciclo de vida de desarrollo de software ágil mediante GitFlow, garantizando la calidad del código a través de pruebas unitarias y entregando una aplicación funcional de análisis de datos. El repositorio cuenta con las ramas main, develop, el tag de versión y la documentación requerida.
 
