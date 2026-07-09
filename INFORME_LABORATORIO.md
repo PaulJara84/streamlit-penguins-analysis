@@ -4,6 +4,8 @@
 
 Desarrollar una aplicación de análisis de datos sobre el dataset Palmer Penguins utilizando Streamlit, implementando un flujo de trabajo de control de versiones GitFlow e integrando pruebas automatizadas con pytest.
 
+---
+
 ## 2. Procedimiento Realizado
 
 2.1. **Configuración del Repositorio y GitFlow**
@@ -17,6 +19,19 @@ Se inicializó el repositorio estableciendo la rama **main** para producción y 
 
 Cada rama fue fusionada a **develop** utilizando **git merge --no-ff** para preservar el historial de características.
 
+Creación directorio:
+
+<img width="670" height="633" alt="image" src="https://github.com/user-attachments/assets/3f7710c2-6d2a-4582-9692-bd2ea5684913" />
+
+Creación de README.md
+
+<img width="669" height="254" alt="image" src="https://github.com/user-attachments/assets/c18bbfd5-8474-42cf-944c-1593b50130ab" />
+
+Rama Develop
+
+<img width="660" height="165" alt="image" src="https://github.com/user-attachments/assets/b8e71b65-3ee2-4fee-bdd5-ab7f8c07940a" />
+
+
 2.2. **Desarrollo de la Aplicación**
 
 - **Validación**: Se crearon funciones en **utils/validation.py** para asegurar la integridad del dataset antes de su procesamiento.
@@ -24,7 +39,10 @@ Cada rama fue fusionada a **develop** utilizando **git merge --no-ff** para pres
 - **Visualización**: Se implementó una tabla interactiva y gráficos de distribución utilizando las libreras nativas de Streamlit.
 
 2.3. Pruebas y Release
-Se ejecutó el suite de pruebas con pytest, validando el correcto funcionamiento de los módulos de utilidad. Tras verificar la estabilidad en develop, se fusionó el código a main y se etiquetó la versión estable con el tag v1.0.0.
+Se ejecutó el suite de pruebas con pytest, validando el correcto funcionamiento de los módulos de utilidad. Tras verificar la estabilidad en develop, se fusionó el código a main y se etiquetó la versión estable con el tag v101.1.0 hasta el tag v101.1.4.
+
+<img width="666" height="109" alt="image" src="https://github.com/user-attachments/assets/02a05c7f-f3d7-445a-9dba-98fdadae5dbd" />
+
 
 ---
 
