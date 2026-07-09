@@ -41,7 +41,13 @@ Rama Develop
 2.3. Pruebas y Release
 Se ejecutó el suite de pruebas con pytest, validando el correcto funcionamiento de los módulos de utilidad. Tras verificar la estabilidad en develop, se fusionó el código a main y se etiquetó la versión estable con el tag v101.1.0 hasta el tag v101.1.4.
 
+<img width="664" height="216" alt="image" src="https://github.com/user-attachments/assets/6636246a-9ca2-497d-bdbf-ea939a821bd1" />
+
+
 <img width="666" height="109" alt="image" src="https://github.com/user-attachments/assets/02a05c7f-f3d7-445a-9dba-98fdadae5dbd" />
+
+
+<img width="666" height="109" alt="image" src="https://github.com/user-attachments/assets/f04b3daa-9515-4fb9-972f-5cde1e323af3" />
 
 
 ---
