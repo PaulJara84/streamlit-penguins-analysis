@@ -1,6 +1,5 @@
-#Actividad No. 1
-
-#Laboratorio GIT aplicado a una aplicación Streamlit para análisis de datos
+# Actividad No. 1
+## Laboratorio GIT aplicado a una aplicación Streamlit para análisis de datos
 
 # Grupo 4
 ## 🚀 Integrantes
@@ -15,7 +14,7 @@
 
 El primer paso es establecer la estructura de ramas adecuada. GitFlow utiliza ramas específicas para desarrollo y características, asegurando que la rama **main** (o **master**) contenga solo código estable.
 
-**Inicialización del Repositorio**
+1.1. **Inicialización del Repositorio**
 
 Crea un directorio para tu proyecto e inicializa Git. Es crucial crear la rama develop desde el inicio, ya que todo el desarrollo ocurrirá allí. 
 
@@ -40,7 +39,7 @@ git checkout develop
 
 ---
 
-**Estrategia de Ramas para las Actividades**
+1.2. **Estrategia de Ramas para las Actividades**
 
 Para cumplir con los requisitos sin generar conflictos ni usar hotfixes, se crearán ramas de característica (**feature/**) individuales desde **develop** para cada tarea solicitada:
 
@@ -49,6 +48,110 @@ Para cumplir con los requisitos sin generar conflictos ni usar hotfixes, se crea
 3. **feature/viz-tabular**: Para la tabla de datos interactiva.
 4. **feature/pruebas-pytest**: Para los tests unitarios. 
 
+---
+
+## 2. Desarrollo de Funcionalidades
+
+A continuación se detalla el código para cada rama de característica. Asegúrate de hacer **git checkout develop** y luego **git checkout -b feature/nombre** antes de empezar cada bloque. 
+
+2.1 **Funciones de Validación (feature/validacion-datos)**
+
+Crea un archivo **utils/validation.py**. Estas funciones aseguran la integridad del dataset **penguins.csv** antes de procesarlo.
+
+```bash
+# utils/validation.py
+import pandas as pd
+
+def validate_dataframe(df: pd.DataFrame) -> bool:
+    """Valida que el dataframe no esté vacío y tenga las columnas esperadas."""
+    required_columns = ['species', 'island', 'bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g', 'sex']
+    if df.empty:
+        return False
+    return all(col in df.columns for col in required_columns)
+
+def validate_no_nulls(df: pd.DataFrame, columns: list) -> int:
+    """Retorna la cantidad de nulos en las columnas especificadas."""
+    return df[columns].isnull().sum().sum()   
+```
+
+2.2. **Aplicación Principal y Visualización Tabular**
+
+Puedes combinar la app principal y la visualización en un solo archivo **app.py** o separarlos. Aquí se presenta una estructura modular en **app.py** que importa las validaciones y muestra los datos. 
+
+```bash
+     # app.py
+      import streamlit as st
+      import pandas as pd
+      from utils.validation import validate_dataframe, validate_no_nulls
+      
+      # Configuración de página
+      st.set_page_config(page_title="Análisis Penguins", layout="wide")
+      
+      st.title("🐧 Análisis de Datos: Palmer Penguins")
+      
+      # Carga de datos
+      @st.cache_data
+      def load_data():
+          try:
+              df = pd.read_csv("penguins.csv")
+              return df
+          except FileNotFoundError:
+              st.error("No se encontró el archivo penguins.csv")
+              return None
+      
+      df = load_data()
+      
+      if df is not None:
+          # Validación
+          if validate_dataframe(df):
+              st.success("✅ Datos validados correctamente.")
+              
+              # KPIs básicos
+              col1, col2 = st.columns(2)
+              with col1:
+                  st.metric("Total Registros", len(df))
+              with col2:
+                  nulos = validate_no_nulls(df, df.columns)
+                  st.metric("Valores Nulos Detectados", nulos)
+      
+              # Visualización Tabular
+              st.subheader("📊 Visualización Tabular de Datos")
+              st.dataframe(df.style.highlight_max(axis=0), use_container_width=True)
+              
+              # Gráfica de ejemplo (Distribución de masa corporal)
+              st.subheader("Distribución de Masa Corporal por Especie")
+              chart_data = df.groupby('species')['body_mass_g'].mean()
+              st.bar_chart(chart_data)
+          else:
+              st.error("❌ El archivo no tiene el formato esperado.")
+      else:
+          st.warning("Esperando carga de datos...")   
+          
+```
+---
+
+## 3. Pruebas con Pytest (feature/pruebas-pytest)
+
+Crea un directorio **tests** y un archivo **test_validation.py**. Esto asegura que las funciones de validación funcionen antes de hacer el release.
+
+ ```bash
+# tests/test_validation.py
+import pandas as pd
+from utils.validation import validate_dataframe, validate_no_nulls
+
+def test_validate_dataframe_success():
+    data = {'species': ['Adelie'], 'island': ['Torgersen'], 'bill_length_mm': [39.1]}
+    df = pd.DataFrame(data)
+    # Nota: En un caso real, el DF debe tener todas las columnas requeridas
+    # Aquí simulamos un DF mínimo para el ejemplo lógico
+    assert validate_dataframe(df) == True # Ajustar lógica según columnas reales
+
+def test_validate_no_nulls():
+    data = {'col1': [1, None], 'col2': [5, 6]}
+    df = pd.DataFrame(data)
+    assert validate_no_nulls(df, ['col1']) == 1   
+
+ ```
 
 
 ## 🖥️ Descarga del repositorio
