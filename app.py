@@ -46,30 +46,3 @@ if df is not None:
 else:
     st.warning("Esperando carga de datos...")   
 
-"""
-# app.py
-import streamlit as st
-import pandas as pd
-import os
-
-# Obtener la ruta absoluta del directorio donde está este script
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_FILE = os.path.join(BASE_DIR, "data", "penguins.csv")
-
-@st.cache_data
-def load_data():
-    # Verificar si el archivo existe antes de intentar leerlo
-    if not os.path.exists(DATA_FILE):
-        st.error(f"❌ El archivo no se encuentra en: {DATA_FILE}")
-        return None
-    
-    try:
-        df = pd.read_csv(DATA_FILE)
-        return df
-    except Exception as e:
-        st.error(f"Error al leer el archivo: {e}")
-        return None
-
-# Resto de tu aplicación...
-df = load_data()
-"""
