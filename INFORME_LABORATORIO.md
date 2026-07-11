@@ -51,20 +51,6 @@ git commit -m "Initial commit"
 git branch develop
 git checkout develop   
 ```
-Paso 1: Creación directorio
-
-<img width="670" height="633" alt="image" src="https://github.com/user-attachments/assets/1ff589a0-48c7-4538-9c8e-eb7363d25a03" />
-
-Paso 2: Creación de README.md
-
-<img width="669" height="254" alt="image" src="https://github.com/user-attachments/assets/f306a898-b1d0-49be-b14e-2f1ddad55d44" />
-
-Paso 3: Rama Develop
-
-<img width="660" height="165" alt="image" src="https://github.com/user-attachments/assets/8d06a804-54c3-4c14-b860-06bdea3bee64" />
-
-
-
 
 ## 2.2. **Estrategia de Ramas para las Actividades**
 
@@ -195,42 +181,57 @@ Ejecuta las pruebas localmente para verificar:
 
 Se ejecutó el suite de pruebas con pytest, validando el correcto funcionamiento de los módulos de utilidad. Tras verificar la estabilidad en develop, se fusionó el código a main y se etiquetó la versión estable con el tag v10001.1.0.
 
-**Pruebas**
+**Actualización de la rama**
 
-<img width="664" height="216" alt="image" src="https://github.com/user-attachments/assets/6636246a-9ca2-497d-bdbf-ea939a821bd1" />
-
-**Actualización de rama**
-
-<img width="661" height="141" alt="image" src="https://github.com/user-attachments/assets/244217d0-2400-4981-b800-97df0a46f970" />
+```bas
+     git checkout develop
+     git merge feature/validacion-datos --no-ff
+```
 
 **Actualización a la rama MAIN**
 
-<img width="663" height="238" alt="image" src="https://github.com/user-attachments/assets/5fb317ba-82e4-4d01-a946-5e7b9bd11390" />
-
+```bas
+     git checkout main
+     git merge develop --no-ff
+```
 
 **Release**
 
-<img width="666" height="109" alt="image" src="https://github.com/user-attachments/assets/02a05c7f-f3d7-445a-9dba-98fdadae5dbd" />
+```bas
+     git tag -a v10001.1.0 -m "Release inicial: App Streamlit con validación y test"
+```
 
-**Vincular repositorio Local a GitHub**
+**Vincular repositorio Local a GitHub** (crear previamente el repositorio en GitHub)
 
-<img width="664" height="170" alt="image" src="https://github.com/user-attachments/assets/70537e6e-d0e9-4495-a8df-bb4b67446af4" />
-
+```bas
+     git remote -v
+```
 **Revisar estado de la rama y hacer commit**
 
-<img width="665" height="542" alt="image" src="https://github.com/user-attachments/assets/dd35124a-0e06-4b92-8117-7a7a585fa7dd" />
+```bas
+     git status
+     git add .
+     git commit -m "Agregar funciones de validación de datos"
+```
 
 **Realizamos el Merge**
 
-<img width="661" height="437" alt="image" src="https://github.com/user-attachments/assets/fa16e3a8-c40f-46e4-8250-afa07e5b2a72" />
+```bas
+     git merge --no-ff develop
+```
 
 **Subimos a GitHub**
 
-<img width="665" height="509" alt="image" src="https://github.com/user-attachments/assets/5a517f0d-b6ba-4707-9d69-60a301042afc" />
+```bas
+     git push origin main develop
+     git push origin --tags
+```
 
 **Ejecutamos**
 
-<img width="665" height="675" alt="image" src="https://github.com/user-attachments/assets/18390da5-7044-46fb-864c-5da34400187c" />
+```bas
+     streamlit run app.py
+```
 
 ---
 
@@ -260,19 +261,11 @@ git checkout main
 git merge develop --no-ff
 
 # Crear tag de versión
-git tag -a v1.0.0 -m "Release inicial: App Streamlit con validación y tests"
+git tag -a v10001.1.0 -m "Release inicial: App Streamlit con validación y tests"
 
 # Subir todo a GitHub (asumiendo remoto configurado como 'origin')
 git push origin main develop --tags   
 ```
-PAso 1: Merge
-
-<img width="663" height="238" alt="image" src="https://github.com/user-attachments/assets/dad280f7-32fd-4712-ad60-6130c4e66b4a" />
-
-Paso 2: Versionamiento - Para nuestro caso tomamos la codificación: v101.1.0 inicial
-
-<img width="666" height="109" alt="image" src="https://github.com/user-attachments/assets/53d7e646-d3da-450f-b994-112d981f4f14" />
-
 
 ---
 
@@ -297,7 +290,7 @@ Se muestra la tabla interactiva con los datos de los pingüinos y los gráficos 
 
 # 📖 6. Documentación del Repositorio
 
-El repositorio debe incluir dos archivos Markdown clave:
+El repositorio incluye dos archivos Markdown clave:
 
 1. **README.md** : Describe el propósito.
    
